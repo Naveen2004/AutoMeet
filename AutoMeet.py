@@ -10,12 +10,12 @@ class AutoMeet(object):
         self.sub = ("EN", "MA", "PH", "PY", "CH", "TT", "AP", "SS")
 
         self.timing = (
-            ((8, 45), (9, 45)),
-            ((9, 50), (10, 35)),
-            ((10, 50), (11, 35)),
-            ((11, 40), (12, 25)),
-            ((13, 10), (13, 55)),
-            ((14, 00), (14, 45)),
+            ((8, 00), (8, 45)),
+            ((8, 45), (9, 30)),
+            ((9, 45), (10, 30)),
+            ((10, 30), (11, 15)),
+            ((11, 45), (12, 30)),
+            ((12,30),(13,15))
         )
 
         self.time_table = (
@@ -54,8 +54,8 @@ class AutoMeet(object):
             e_time = d.datetime.combine(date, e_time)
 
             if (
-                current_time <= e_time-d.timedelta(hours=1)
-                and current_time + d.timedelta(minutes=5, hours=1) >= s_time
+                current_time <= e_time
+                and current_time >= s_time
             ):
                 self.slot = self.timing.index(duration)
                 break
